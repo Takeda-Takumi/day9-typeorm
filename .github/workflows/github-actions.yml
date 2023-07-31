@@ -6,7 +6,6 @@ on:
 jobs:
   build:
     name: Run Test
-    
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +15,7 @@ jobs:
         with:
           node-version: '18.x'
       - name: Install dependencies
-        run: yarn
+      - run: yarn
       - name: Build
       - run: yarn build
       - name: Run test
