@@ -1,0 +1,21 @@
+version: '2'
+services:
+  db_data:
+    image: busybox
+    volumes:
+      - /var/lib/mysql
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.conf
+    volumes_from:
+      - db_data
+    ports:
+      - "${DB_PORT}:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      # MYSQL_PASSWORD: ${DB_PASS}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+
+
